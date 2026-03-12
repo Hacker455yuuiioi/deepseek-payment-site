@@ -2,119 +2,120 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
   <title>DeepSeek Search Pro - Upgrade</title>
   
-  <!-- PayPal SDK - Your exact code -->
+  <!-- PayPal SDK -->
   <script src="https://www.paypal.com/sdk/js?client-id=BAAuM2hI4IaFDYw_psLDyHY-W5gL5SthKlH4c4IG5tfp3tzuKyKXJF0rMY7qqZWtI0F7NalJ4czGsoeNLU&components=hosted-buttons&disable-funding=venmo&currency=USD"></script>
   
   <style>
-    /* RESET - Ensure horizontal text */
+    /* RESET - Force horizontal text everywhere */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      text-orientation: mixed;
       writing-mode: horizontal-tb !important;
+      text-orientation: mixed;
+    }
+    
+    html, body {
+      width: 100%;
+      min-height: 100vh;
     }
     
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
       background: linear-gradient(135deg, #1B4F9A, #1F6FB2);
-      min-height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
       margin: 0;
-      padding: 20px;
+      padding: 16px;
     }
     
-    /* Clean card layout */
+    /* Card - responsive sizing */
     .payment-card {
       background: white;
-      border-radius: 24px;
-      padding: 40px;
-      max-width: 480px;
+      border-radius: 28px;
+      padding: 32px 24px;
       width: 100%;
+      max-width: 480px;
       box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+      margin: auto;
     }
     
-    /* Product title - normal horizontal text */
+    /* Title - responsive font */
     .product-title {
-      font-size: 28px;
+      font-size: clamp(22px, 6vw, 28px);
       font-weight: 700;
       color: #1f2937;
       margin-bottom: 24px;
       text-align: center;
       line-height: 1.3;
+      word-break: break-word;
     }
     
     /* Pricing section */
     .pricing {
       background: #f9fafb;
-      border-radius: 16px;
-      padding: 24px;
-      margin-bottom: 30px;
+      border-radius: 20px;
+      padding: 24px 16px;
+      margin-bottom: 24px;
       text-align: center;
     }
     
     .price-row {
       display: flex;
+      flex-wrap: wrap;
       align-items: center;
       justify-content: center;
-      gap: 12px;
+      gap: 8px 12px;
       margin-bottom: 8px;
     }
     
     .old-price {
-      font-size: 20px;
+      font-size: clamp(16px, 4vw, 20px);
       color: #9ca3af;
       text-decoration: line-through;
     }
     
     .new-price {
-      font-size: 36px;
+      font-size: clamp(28px, 8vw, 36px);
       font-weight: 700;
       color: #10a37f;
+      line-height: 1.2;
     }
     
     .discount-badge {
       background: #10a37f;
       color: white;
-      font-size: 14px;
+      font-size: clamp(12px, 3vw, 14px);
       font-weight: 600;
       padding: 4px 12px;
       border-radius: 30px;
+      white-space: nowrap;
     }
     
     .savings {
-      font-size: 14px;
+      font-size: clamp(13px, 3.5vw, 14px);
       color: #10a37f;
       font-weight: 500;
-      margin-top: 4px;
+      margin: 8px 0;
     }
     
     .description {
-      font-size: 16px;
+      font-size: clamp(14px, 4vw, 16px);
       color: #4b5563;
-      margin: 20px 0 0 0;
+      margin: 16px 0 0;
       line-height: 1.5;
       text-align: center;
       border-top: 1px solid #e5e7eb;
       padding-top: 20px;
     }
     
-    /* PayPal button container - clean and centered */
-    .paypal-button-container {
-      margin: 20px 0 10px;
-      width: 100%;
-      min-height: 50px;
-    }
-    
-    /* Feature list (optional, keep minimal) */
+    /* Features - responsive */
     .features {
-      margin: 25px 0 15px;
-      text-align: left;
+      margin: 24px 0 20px;
     }
     
     .feature-item {
@@ -123,23 +124,41 @@
       gap: 10px;
       padding: 8px 0;
       color: #4b5563;
-      font-size: 15px;
+      font-size: clamp(14px, 3.5vw, 15px);
+      line-height: 1.4;
     }
     
     .feature-item:before {
       content: "✓";
       color: #10a37f;
       font-weight: bold;
-      font-size: 18px;
+      font-size: clamp(16px, 4vw, 18px);
+      flex-shrink: 0;
+    }
+    
+    /* PayPal button container */
+    .paypal-button-container {
+      margin: 20px 0 16px;
+      width: 100%;
+      min-height: 45px;
+    }
+    
+    /* Force PayPal button to be horizontal */
+    .paypal-button-container iframe,
+    .paypal-button-container div,
+    .paypal-button-container button {
+      max-width: 100% !important;
+      width: 100% !important;
+      display: block !important;
     }
     
     /* Guarantee text */
     .guarantee {
       text-align: center;
       color: #6b7280;
-      font-size: 13px;
-      margin-top: 20px;
-      padding-top: 20px;
+      font-size: clamp(12px, 3vw, 13px);
+      margin-top: 16px;
+      padding-top: 16px;
       border-top: 1px solid #e5e7eb;
     }
     
@@ -147,18 +166,60 @@
     .loading {
       text-align: center;
       color: #6b7280;
-      padding: 20px;
+      padding: 16px;
       background: #f9fafb;
-      border-radius: 8px;
+      border-radius: 12px;
+      font-size: clamp(13px, 3.5vw, 14px);
+    }
+    
+    /* Error state */
+    .error-message {
+      color: #ef4444;
+      padding: 16px;
+      text-align: center;
+      background: #fee2e2;
+      border-radius: 12px;
+      font-size: clamp(13px, 3.5vw, 14px);
+    }
+    
+    /* Desktop-specific adjustments */
+    @media (min-width: 768px) {
+      .payment-card {
+        padding: 40px;
+      }
+      
+      .price-row {
+        gap: 12px;
+      }
+      
+      .feature-item {
+        padding: 10px 0;
+      }
+    }
+    
+    /* Small mobile adjustments */
+    @media (max-width: 380px) {
+      .payment-card {
+        padding: 24px 16px;
+      }
+      
+      .pricing {
+        padding: 20px 12px;
+      }
+      
+      .price-row {
+        flex-direction: column;
+        gap: 6px;
+      }
     }
   </style>
 </head>
 <body>
   <div class="payment-card">
-    <!-- Product Title - Normal Horizontal Text -->
+    <!-- Product Title -->
     <h1 class="product-title">DeepSeek Conversation Search Pro</h1>
     
-    <!-- Pricing Information - Clean Layout -->
+    <!-- Pricing Information -->
     <div class="pricing">
       <div class="price-row">
         <span class="old-price">$9.99 USD</span>
@@ -171,17 +232,17 @@
       </div>
     </div>
     
-    <!-- Minimal feature list (optional) -->
+    <!-- Features -->
     <div class="features">
       <div class="feature-item">Access all conversations (7+ days old)</div>
       <div class="feature-item">Full message search across all chats</div>
-      <div class="feature-item">Keyword highlighting</div>
+      <div class="feature-item">Keyword highlighting in conversations</div>
     </div>
     
-    <!-- ONLY PayPal Button - Clean and Centered -->
+    <!-- ONLY PayPal Button -->
     <div id="paypal-container-2AXBD4Q9J8V2G" class="paypal-button-container"></div>
     
-    <!-- Simple Guarantee -->
+    <!-- Guarantee -->
     <div class="guarantee">
       30-day money-back guarantee
     </div>
@@ -189,13 +250,13 @@
 
   <script>
     // Show loading while PayPal initializes
-    document.getElementById('paypal-container-2AXBD4Q9J8V2G').innerHTML = '<div class="loading">Loading secure checkout...</div>';
+    const container = document.getElementById('paypal-container-2AXBD4Q9J8V2G');
+    container.innerHTML = '<div class="loading">Loading secure checkout...</div>';
     
     // Your exact PayPal code
     paypal.HostedButtons({
       hostedButtonId: "2AXBD4Q9J8V2G",
       onSuccess: function(details) {
-        // Payment succeeded
         chrome.storage.local.set({
           payment_status: {
             isPaid: true,
@@ -208,9 +269,7 @@
       },
       onError: function(err) {
         console.error('PayPal Error:', err);
-        document.getElementById('paypal-container-2AXBD4Q9J8V2G').innerHTML = 
-          '<div style="color: #ef4444; padding: 15px; text-align: center; background: #fee2e2; border-radius: 8px;">' +
-          'Error loading PayPal. Please refresh.</div>';
+        container.innerHTML = '<div class="error-message">⚠️ Error loading PayPal. Please refresh.</div>';
       }
     }).render("#paypal-container-2AXBD4Q9J8V2G");
   </script>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DeepSeekTool Pro - Upgrade</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #1B4F9A, #1F6FB2);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0;
+      padding: 20px;
+    }
+    .payment-card {
+      background: white;
+      border-radius: 24px;
+      padding: 40px;
+      max-width: 450px;
+      width: 100%;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+      text-align: center;
+    }
+    h1 { color: #1f2937; margin-bottom: 10px; }
+    .price { 
+      font-size: 48px; 
+      font-weight: bold; 
+      color: #10a37f; 
+      margin: 20px 0; 
+    }
+    .price small { font-size: 18px; color: #6b7280; }
+    .feature-list {
+      list-style: none;
+      padding: 0;
+      margin: 30px 0;
+      text-align: left;
+    }
+    .feature-list li {
+      padding: 12px 0;
+      border-bottom: 1px solid #e5e7eb;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .feature-list li:before {
+      content: "✓";
+      color: #10a37f;
+      font-weight: bold;
+      font-size: 18px;
+    }
+    .paypal-button {
+      background: #0070ba;
+      color: white;
+      border: none;
+      border-radius: 25px;
+      padding: 15px 30px;
+      font-size: 18px;
+      font-weight: 600;
+      cursor: pointer;
+      width: 100%;
+      margin: 20px 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+    .paypal-button:hover { background: #005ea6; }
+    .guarantee {
+      color: #6b7280;
+      font-size: 14px;
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 1px solid #e5e7eb;
+    }
+  </style>
+</head>
+<body>
+  <div class="payment-card">
+    <h1>DeepSeekTool Pro</h1>
+    <div class="price">$8.99 <small>/year</small></div>
+    
+    <ul class="feature-list">
+      <li>Access all conversations (8+ days old)</li>
+      <li>Full message search across all chats</li>
+      <li>Keyword highlighting in conversations</li>
+      <li>Priority support</li>
+    </ul>
+    
+    <!-- DIRECT PAYPAL BUTTON -->
+    <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=2AXBD4Q93JV26&return=https://deepseektool.it.com/success" 
+       target="_blank" 
+       class="paypal-button">
+      <span>PayPal</span>
+      <span>• Debit or Credit Card</span>
+    </a>
+    
+    <div class="guarantee">
+      30-day money-back guarantee
+    </div>
+  </div>
+</body>
+</html>

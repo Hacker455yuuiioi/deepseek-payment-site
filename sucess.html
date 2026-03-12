@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payment Successful</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #1B4F9A, #1F6FB2);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .success-card {
+      background: white;
+      border-radius: 24px;
+      padding: 40px;
+      max-width: 400px;
+      text-align: center;
+    }
+    h1 { color: #1f2937; }
+    .button {
+      background: #10a37f;
+      color: white;
+      padding: 12px 30px;
+      border-radius: 30px;
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="success-card">
+    <h1>✅ Payment Successful!</h1>
+    <p>Your Pro access is now active.</p>
+    <a href="https://chat.deepseek.com" class="button">Return to DeepSeek</a>
+  </div>
+  <script>
+    chrome.storage.local.set({
+      payment_status: {
+        isPaid: true,
+        paidAt: Date.now(),
+        expiryDate: Date.now() + (365 * 24 * 60 * 60 * 1000)
+      }
+    });
+    setTimeout(() => window.close(), 3000);
+  </script>
+</body>
+</html>

@@ -3,19 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DeepSeek Search Pro - Upgrade</title>
-  
-  <!-- PayPal SDK -->
-  <script src="https://www.paypal.com/sdk/js?client-id=BAAuM2hI4IaFDYw_psLDyHY-W5gL5SthKlH4c4IG5tfp3tzuKyKXJF0rMY7qqZWtI0F7NalJ4czGsoeNLU&components=hosted-buttons&disable-funding=venmo&currency=USD"></script>
-  
+  <title>DeepSeek Search Pro - Free Conversation Search</title>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      writing-mode: horizontal-tb !important;
-    }
-    
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       background: linear-gradient(135deg, #1B4F9A, #1F6FB2);
@@ -23,164 +12,105 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      padding: 16px;
+      margin: 0;
+      padding: 20px;
     }
-    
-    .payment-card {
+    .landing-card {
       background: white;
-      border-radius: 28px;
-      padding: 32px;
-      max-width: 450px;
+      border-radius: 24px;
+      padding: 40px;
+      max-width: 600px;
       width: 100%;
       box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+      text-align: center;
     }
-    
     h1 {
-      font-size: 24px;
       color: #1f2937;
-      margin-bottom: 20px;
-      text-align: center;
-    }
-    
-    .pricing {
-      background: #f9fafb;
-      border-radius: 16px;
-      padding: 20px;
-      margin-bottom: 24px;
-      text-align: center;
-    }
-    
-    .price-row {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      margin-bottom: 8px;
-      flex-wrap: wrap;
-    }
-    
-    .old-price {
-      font-size: 18px;
-      color: #9ca3af;
-      text-decoration: line-through;
-    }
-    
-    .new-price {
       font-size: 32px;
-      font-weight: 700;
-      color: #10a37f;
+      margin-bottom: 10px;
     }
-    
-    .discount-badge {
-      background: #10a37f;
-      color: white;
-      font-size: 12px;
-      font-weight: 600;
-      padding: 4px 10px;
-      border-radius: 20px;
+    .subtitle {
+      color: #6b7280;
+      font-size: 18px;
+      margin-bottom: 30px;
     }
-    
-    .savings {
-      font-size: 14px;
-      color: #10a37f;
-      margin: 8px 0;
+    .feature-list {
+      text-align: left;
+      margin: 30px 0;
     }
-    
-    .description {
-      font-size: 15px;
-      color: #4b5563;
-      margin-top: 15px;
-      padding-top: 15px;
-      border-top: 1px solid #e5e7eb;
-    }
-    
-    .features {
-      margin: 20px 0;
-    }
-    
     .feature-item {
       display: flex;
       align-items: center;
-      gap: 10px;
-      padding: 8px 0;
-      color: #4b5563;
+      gap: 12px;
+      padding: 12px 0;
+      border-bottom: 1px solid #e5e7eb;
+      font-size: 16px;
     }
-    
     .feature-item:before {
       content: "✓";
       color: #10a37f;
       font-weight: bold;
+      font-size: 20px;
     }
-    
-    .paypal-container {
+    .badge {
+      background: #f59e0b;
+      color: white;
+      padding: 8px 20px;
+      border-radius: 30px;
+      font-size: 14px;
+      font-weight: bold;
+      display: inline-block;
       margin: 20px 0;
     }
-    
-    .guarantee {
-      text-align: center;
-      color: #6b7280;
-      font-size: 13px;
-      padding-top: 15px;
-      border-top: 1px solid #e5e7eb;
+    .install-note {
+      background: #f3f4f6;
+      border-radius: 12px;
+      padding: 20px;
+      font-size: 14px;
+      color: #4b5563;
+    }
+    .button {
+      background: #10a37f;
+      color: white;
+      border: none;
+      border-radius: 30px;
+      padding: 12px 30px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 20px;
     }
   </style>
 </head>
 <body>
-  <div class="payment-card">
-    <h1>DeepSeek Conversation Search Pro</h1>
+  <div class="landing-card">
+    <h1>🔍 DeepSeek Search Pro</h1>
+    <div class="subtitle">Search all your DeepSeek conversations instantly</div>
     
-    <div class="pricing">
-      <div class="price-row">
-        <span class="old-price">$9.99 USD</span>
-        <span class="new-price">$8.99 USD</span>
-        <span class="discount-badge">10% off</span>
-      </div>
-      <div class="savings">Save $1.00 USD</div>
-      <div class="description">
-        Unlock unlimited conversation history on DeepSeek!
-      </div>
+    <div class="badge">🎁 COMPLETELY FREE - BETA TESTING</div>
+    
+    <div class="feature-list">
+      <div class="feature-item">Search across ALL conversations</div>
+      <div class="feature-item">Find keywords inside messages</div>
+      <div class="feature-item">Click any result to jump to that chat</div>
+      <div class="feature-item">Keywords highlighted automatically</div>
+      <div class="feature-item">Works with your existing DeepSeek chats</div>
     </div>
     
-    <div class="features">
-      <div class="feature-item">Access all conversations (7+ days old)</div>
-      <div class="feature-item">Full message search across all chats</div>
-      <div class="feature-item">Keyword highlighting in conversations</div>
+    <div class="install-note">
+      <strong>📥 How to install:</strong><br>
+      1. Download the extension from Chrome Web Store (coming soon)<br>
+      2. Or load unpacked in developer mode<br>
+      3. Click the extension icon to start searching
     </div>
     
-    <div id="paypal-container-2AXBD4Q9J8V2G" class="paypal-container"></div>
+    <a href="https://chat.deepseek.com" class="button" target="_blank">Go to DeepSeek Chat</a>
     
-    <div class="guarantee">
-      30-day money-back guarantee
-    </div>
+    <p style="color: #9ca3af; font-size: 12px; margin-top: 30px;">
+      Your usage helps us improve the tool • No payment required
+    </p>
   </div>
-
-  <script>
-    paypal.HostedButtons({
-      hostedButtonId: "2AXBD4Q9J8V2G",
-      onSuccess: function(details) {
-        chrome.storage.local.set({
-          payment_status: {
-            isPaid: true,
-            paidAt: Date.now(),
-            expiryDate: Date.now() + (365 * 24 * 60 * 60 * 1000)
-          }
-        }, function() {
-          window.location.href = 'success.html';
-        });
-      }
-    }).render("#paypal-container-2AXBD4Q9J8V2G");
-    
-    if (document.referrer.includes('paypal.com')) {
-      chrome.storage.local.set({
-        payment_status: {
-          isPaid: true,
-          paidAt: Date.now(),
-          expiryDate: Date.now() + (365 * 24 * 60 * 60 * 1000)
-        }
-      }, function() {
-        window.location.href = 'success.html';
-      });
-    }
-  </script>
 </body>
 </html>

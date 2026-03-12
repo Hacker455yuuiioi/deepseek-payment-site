@@ -3,8 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DeepSeekTool Pro</title>
+  <title>DeepSeekTool Pro - Upgrade</title>
+  
+  <!-- Part 1: YOUR EXACT PAYPAL SDK CODE -->
+  <script src="https://www.paypal.com/sdk/js?client-id=BAAuM2hI4IaFDYw_psLDyHY-W5gL5SthKlH4c4IG5tfp3tzuKyKXJF0rMY7qqZWtI0F7NalJ4czGsoeNLU&components=hosted-buttons&disable-funding=venmo&currency=USD"></script>
+  
   <style>
+    /* Center everything beautifully */
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       background: linear-gradient(135deg, #1B4F9A, #1F6FB2);
@@ -15,42 +20,51 @@
       margin: 0;
       padding: 20px;
     }
+    
     .payment-card {
       background: white;
       border-radius: 24px;
       padding: 40px;
-      max-width: 450px;
+      max-width: 480px;
       width: 100%;
       box-shadow: 0 20px 60px rgba(0,0,0,0.3);
       text-align: center;
     }
+    
     h1 {
       color: #1f2937;
       margin-bottom: 10px;
+      font-size: 28px;
     }
+    
     .price {
       font-size: 48px;
       font-weight: bold;
       color: #10a37f;
       margin: 20px 0;
     }
+    
     .price small {
       font-size: 18px;
       color: #6b7280;
     }
+    
     .feature-list {
       list-style: none;
       padding: 0;
       margin: 30px 0;
       text-align: left;
     }
+    
     .feature-list li {
       padding: 12px 0;
       border-bottom: 1px solid #e5e7eb;
       display: flex;
       align-items: center;
       gap: 12px;
+      font-size: 16px;
     }
+    
     .feature-list li:before {
       content: "✓";
       color: #10a37f;
@@ -58,44 +72,45 @@
       font-size: 18px;
     }
     
-    /* SIMPLE DIRECT PAYPAL LINK BUTTON */
-    .paypal-button {
-      background: #0070ba;
-      color: white;
-      border: none;
-      border-radius: 25px;
-      padding: 15px 20px;
-      font-size: 18px;
-      font-weight: 600;
-      cursor: pointer;
-      width: 100%;
-      margin: 20px 0;
-      display: block;
-      text-align: center;
-      text-decoration: none;
-      transition: background 0.2s;
-    }
-    
-    .paypal-button:hover {
-      background: #005ea6;
-    }
-    
-    .paypal-logos {
+    /* PayPal button container - perfectly centered */
+    #paypal-container-2AXBD4Q9J8V2G {
+      margin: 30px auto;
       display: flex;
-      align-items: center;
       justify-content: center;
-      gap: 15px;
-      margin: 15px 0;
+      align-items: center;
+      width: 100%;
+    }
+    
+    /* Style the payment methods row */
+    .payment-methods {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin: 20px 0;
       color: #6b7280;
       font-size: 14px;
+      flex-wrap: wrap;
+    }
+    
+    .payment-methods span {
+      background: #f3f4f6;
+      padding: 5px 12px;
+      border-radius: 20px;
     }
     
     .guarantee {
       color: #6b7280;
       font-size: 14px;
-      margin-top: 20px;
+      margin-top: 30px;
       padding-top: 20px;
       border-top: 1px solid #e5e7eb;
+    }
+    
+    /* Loading state */
+    .loading {
+      text-align: center;
+      color: #6b7280;
+      padding: 20px;
     }
   </style>
 </head>
@@ -111,14 +126,10 @@
       <li>Priority support</li>
     </ul>
     
-    <!-- SIMPLE DIRECT LINK - THIS WILL WORK -->
-    <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=2AXBD4Q93JV26&return=https://deepseektool.it.com/success" 
-       target="_blank" 
-       class="paypal-button">
-      💳 PayPal • Debit or Credit Card
-    </a>
+    <!-- Part 2: YOUR EXACT PAYPAL BUTTON CONTAINER -->
+    <div id="paypal-container-2AXBD4Q9J8V2G"></div>
     
-    <div class="paypal-logos">
+    <div class="payment-methods">
       <span>VISA</span>
       <span>Mastercard</span>
       <span>Discover</span>
@@ -129,18 +140,48 @@
       30-day money-back guarantee
     </div>
   </div>
+
+  <!-- Part 2 continued: YOUR EXACT PAYPAL RENDER CODE -->
+  <script>
+    // Show loading state while PayPal initializes
+    document.getElementById('paypal-container-2AXBD4Q9J8V2G').innerHTML = '<div class="loading">Loading PayPal...</div>';
+    
+    // YOUR EXACT PAYPAL CODE - with success handler
+    paypal.HostedButtons({
+      hostedButtonId: "2AXBD4Q9J8V2G",
+      onSuccess: function(details) {
+        // Payment succeeded - update extension storage
+        chrome.storage.local.set({
+          payment_status: {
+            isPaid: true,
+            paidAt: Date.now(),
+            expiryDate: Date.now() + (365 * 24 * 60 * 60 * 1000)
+          }
+        }, function() {
+          // Redirect to success page
+          window.location.href = 'success.html';
+        });
+      },
+      onError: function(err) {
+        console.error('PayPal Error:', err);
+        document.getElementById('paypal-container-2AXBD4Q9J8V2G').innerHTML = 
+          '<div style="color: #ef4444; padding: 20px;">' +
+          'Error loading PayPal. Please refresh and try again.</div>';
+      }
+    }).render("#paypal-container-2AXBD4Q9J8V2G");
+  </script>
   
+  <!-- Handle return from PayPal -->
   <script>
     // Check if returning from PayPal
-    const urlParams = new URLSearchParams(window.location.search);
-    if (urlParams.has('payment_success') || document.referrer.includes('paypal.com')) {
+    if (document.referrer.includes('paypal.com') || window.location.search.includes('payment_success')) {
       chrome.storage.local.set({
         payment_status: {
           isPaid: true,
           paidAt: Date.now(),
           expiryDate: Date.now() + (365 * 24 * 60 * 60 * 1000)
         }
-      }, () => {
+      }, function() {
         window.location.href = 'success.html';
       });
     }

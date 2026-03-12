@@ -43,6 +43,15 @@
     <p>Thank you for upgrading to DeepSeek Search Pro.<br>All conversations are now unlocked.</p>
     <a href="https://chat.deepseek.com" class="button">Return to DeepSeek</a>
   </div>
-  <script>setTimeout(() => window.close(), 5000);</script>
+  <script>
+    chrome.storage.local.set({
+      payment_status: {
+        isPaid: true,
+        paidAt: Date.now(),
+        expiryDate: Date.now() + (365 * 24 * 60 * 60 * 1000)
+      }
+    });
+    setTimeout(() => window.close(), 5000);
+  </script>
 </body>
 </html>

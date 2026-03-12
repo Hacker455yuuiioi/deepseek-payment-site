@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DeepSeekTool Pro - Upgrade</title>
+  <title>DeepSeekTool Pro</title>
   <style>
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
@@ -24,14 +24,20 @@
       box-shadow: 0 20px 60px rgba(0,0,0,0.3);
       text-align: center;
     }
-    h1 { color: #1f2937; margin-bottom: 10px; }
-    .price { 
-      font-size: 48px; 
-      font-weight: bold; 
-      color: #10a37f; 
-      margin: 20px 0; 
+    h1 {
+      color: #1f2937;
+      margin-bottom: 10px;
     }
-    .price small { font-size: 18px; color: #6b7280; }
+    .price {
+      font-size: 48px;
+      font-weight: bold;
+      color: #10a37f;
+      margin: 20px 0;
+    }
+    .price small {
+      font-size: 18px;
+      color: #6b7280;
+    }
     .feature-list {
       list-style: none;
       padding: 0;
@@ -51,24 +57,39 @@
       font-weight: bold;
       font-size: 18px;
     }
+    
+    /* SIMPLE DIRECT PAYPAL LINK BUTTON */
     .paypal-button {
       background: #0070ba;
       color: white;
       border: none;
       border-radius: 25px;
-      padding: 15px 30px;
+      padding: 15px 20px;
       font-size: 18px;
       font-weight: 600;
       cursor: pointer;
       width: 100%;
       margin: 20px 0;
+      display: block;
+      text-align: center;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    
+    .paypal-button:hover {
+      background: #005ea6;
+    }
+    
+    .paypal-logos {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 10px;
-      text-decoration: none;
+      gap: 15px;
+      margin: 15px 0;
+      color: #6b7280;
+      font-size: 14px;
     }
-    .paypal-button:hover { background: #005ea6; }
+    
     .guarantee {
       color: #6b7280;
       font-size: 14px;
@@ -90,17 +111,39 @@
       <li>Priority support</li>
     </ul>
     
-    <!-- DIRECT PAYPAL BUTTON -->
+    <!-- SIMPLE DIRECT LINK - THIS WILL WORK -->
     <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=2AXBD4Q93JV26&return=https://deepseektool.it.com/success" 
        target="_blank" 
        class="paypal-button">
-      <span>PayPal</span>
-      <span>• Debit or Credit Card</span>
+      💳 PayPal • Debit or Credit Card
     </a>
+    
+    <div class="paypal-logos">
+      <span>VISA</span>
+      <span>Mastercard</span>
+      <span>Discover</span>
+      <span>Amex</span>
+    </div>
     
     <div class="guarantee">
       30-day money-back guarantee
     </div>
   </div>
+  
+  <script>
+    // Check if returning from PayPal
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.has('payment_success') || document.referrer.includes('paypal.com')) {
+      chrome.storage.local.set({
+        payment_status: {
+          isPaid: true,
+          paidAt: Date.now(),
+          expiryDate: Date.now() + (365 * 24 * 60 * 60 * 1000)
+        }
+      }, () => {
+        window.location.href = 'success.html';
+      });
+    }
+  </script>
 </body>
 </html>

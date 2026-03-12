@@ -6,7 +6,7 @@
   <title>Payment Successful</title>
   <style>
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
       background: linear-gradient(135deg, #1B4F9A, #1F6FB2);
       min-height: 100vh;
       display: flex;
@@ -20,24 +20,12 @@
       border-radius: 24px;
       padding: 40px;
       max-width: 400px;
-      width: 100%;
       text-align: center;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
     }
-    h1 {
-      color: #1f2937;
-      margin-bottom: 20px;
-    }
-    .checkmark {
-      font-size: 80px;
-      color: #10a37f;
-      margin-bottom: 20px;
-    }
-    p {
-      color: #6b7280;
-      margin-bottom: 30px;
-      line-height: 1.6;
-    }
+    h1 { color: #1f2937; margin-bottom: 20px; }
+    .checkmark { font-size: 64px; color: #10a37f; margin-bottom: 20px; }
+    p { color: #6b7280; margin-bottom: 30px; line-height: 1.6; }
     .button {
       background: #10a37f;
       color: white;
@@ -52,12 +40,9 @@
   <div class="success-card">
     <div class="checkmark">✅</div>
     <h1>Payment Successful!</h1>
-    <p>Thank you for upgrading to DeepSeekTool Pro.<br>All conversations are now unlocked.</p>
+    <p>Thank you for upgrading to DeepSeek Search Pro.<br>All conversations are now unlocked.</p>
     <a href="https://chat.deepseek.com" class="button">Return to DeepSeek</a>
   </div>
-  <script>
-    // Auto-close after 5 seconds
-    setTimeout(() => window.close(), 5000);
-  </script>
+  <script>setTimeout(() => window.close(), 5000);</script>
 </body>
 </html>

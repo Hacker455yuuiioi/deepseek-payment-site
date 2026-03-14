@@ -1,0 +1,38 @@
+.search-highlight {
+  background: #fef3c7 !important;
+  color: #92400e !important;
+  font-weight: 500 !important;
+  padding: 2px 0 !important;
+  border-radius: 2px !important;
+  transition: all 0.2s ease !important;
+}
+
+.search-highlight-global {
+  background: #fef3c7 !important;
+  color: #92400e !important;
+  font-weight: 500 !important;
+  padding: 2px 0 !important;
+  border-radius: 2px !important;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05) !important;
+  transition: all 0.2s ease !important;
+}
+
+.search-highlight-global:hover {
+  background: #fde68a !important;
+  transform: scale(1.02) !important;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+#deepseek-search-widget {
+  animation: slideIn 0.3s ease;
+}
